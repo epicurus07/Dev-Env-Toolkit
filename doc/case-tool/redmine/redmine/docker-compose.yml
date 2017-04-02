@@ -1,0 +1,28 @@
+version: '2'
+services: 
+ redmine:
+  build: ./
+  image: epicurus/redmine
+  container_name: redmine
+  ports:
+  - "3000:3000"
+  networks:
+  - epicurus-net
+  volumes:
+   - /sw/redmine:/usr/src/redmine/files
+ mysql:
+  image: mysql
+  container_name: mysql
+  networks:
+  - epicurus-net
+  environment:
+  - MYSQL_ROOT_PASSWORD=root
+  - MYSQL_USER=redmine
+  - MYSQL_PASSWORD=redmine
+  - MYSQL_DATABASE=redmine
+  volumes:
+  - /sw/redmine:/etc/mysql.conf.d
+networks:
+ epicurus-net:
+  external:
+   name: epicurus-net
