@@ -18,7 +18,7 @@ Jenkins
       - "380:8080"
       volumesg:
       ## jenkins home mapping
-      - [jenkins home in local]:[jenkins home in container]
+      - /app/jenkins:/var/jenkins_home
       ## docker remote api 사용하기 위함
       - /var/run/docker.sock:/var/run/docker.sock
       ## ssh cert 파일 mapping
@@ -172,6 +172,19 @@ Sample Project는 Gradle를 이용한 Java Project 이다.
       - Build 항목
       Deamon process이기 때문에 10초간 실행 후 kill로 종료
 ![sample dynamicanalytics job build](images/job/sample-dynamicanalytics-job/configure-build.PNG)
+
+        </br>
+        ```
+        valgrind --tool=memcheck --leak-check=full --show-reachable=no \
+        --undef-value-errors=no --track-origins=no \
+        --child-silent-after-fork=no --trace-children=no \
+        --gen-suppressions=no --xml=yes \
+        --xml-file=DaemonProjectSample.%p.valgrind.xml \
+        java -jar $WORKSPACE/build/libs/DaemonProjectSample.jar &
+        ## Daemon 프로세스라서 10초간 실행 후 종료
+        sleep 10
+        kill  $(ps -ef | grep "$WORKSPACE/build/libs/DaemonProjectSample.jar" | grep -v 'grep' | awk '{print $2}')
+        ```
       </br>
       - 빌드 후 조치 항목
       Valgrind 결과가 Leak이 30 이상이면 job이 실패했다고 판단하게 설정.
@@ -209,5 +222,16 @@ Sample Project는 Gradle를 이용한 Java Project 이다.
       - 빌드 후 조치 항목
       사용하지 않는 container 삭제, 모든 image 삭제, create image을 registry(sample.com:5000)에서 pull, run image
 ![sample deploy job post-build actions](images/job/sample-deploy-job/configure-빌드후조치.PNG)
+      </br>
+        ```
+        # 종료된 컨테이너 삭제
+        docker ps -a | awk '{print $1}' | grep -v 'CONTAINER' | xargs --no-run-if-empty docker rm -f
+        # 종료된 이미지 삭제
+        docker images | awk '{print $3}' | grep -v 'IMAGE' | xargs --no-run-if-empty docker rmi -f
+        # registry에 접속 로그인
+        docker login -u epicurus -p 1Eepicurus dev.sw-warehouse.xyz:450
+        # 이미지 pull 후 run
+        docker run -d --name daemon-project-sample dev.sw-warehouse.xyz:450/daemon-project-sample
+        ```  
 
   [05c45105]: https://github.com/Yongdae-Kim/HowToUseJenkins "jenkins overview"
