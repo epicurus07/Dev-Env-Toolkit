@@ -81,15 +81,12 @@ Sample Project는 Gradle를 이용한 Java Project 이다.
     - Docker Plugin
     docker registry를 사용할 수 있도록 설정. 운영 서버에 이미지를 배포하기 위한 registry.
     ![system config docker plugin](images/system-configure/docker-plugin.PNG)
-    <br>
     - Publish Over ssh
     운영서버에 접근하여 shell script를 원격으로 실행하기 위함.
     ![system config publish over ssh](images/system-configure/publish-over-ssh.PNG)
-    <br>
     - Workespace Sharing
     연관되어 있는 job끼리 같은 workspace를 사용하기 위함.
     ![system cofig workspace sharing](images/system-configure/worksapce-sharing.PNG)
-    <br>
   - Global Tool Configuration
     - Git  
       ![global tool configuration git](images/global-tool-configuration/Git.PNG)
