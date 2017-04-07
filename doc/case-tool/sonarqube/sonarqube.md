@@ -31,20 +31,20 @@ networks:
    name: epicurus-net
 
 ```
-### 테스트
-- Plugin 설치
-  - http://\<HOST\>:590/sonar
-  - Default ID : admin / PW : admin
-  - 환경설정 -> 시스템 -> 업테이트 센터, 아래의 플러그인 설치
+### 테스트   
+- Plugin 설치     
+  - http://\<HOST\>:590/sonar     
+  - Default ID : admin / PW : admin     
+  - 환경설정 -> 시스템 -> 업테이트 센터, 아래의 플러그인 설치     
   ![update center](images/update-center.PNG)
-- 프로젝트 생성
-  - 환경설정 -> 프로젝트 -> management
-  - Create Project 클릭
-  ![project management](images/project-management.PNG)
-  - Name, Key 입력 후 Create 클릭
+- 프로젝트 생성   
+  - 환경설정 -> 프로젝트 -> management     
+  - Create Project 클릭      
+  ![project management](images/project-management.PNG)    
+  - Name, Key 입력 후 Create 클릭     
   ![create project](images/create-project.PNG)
-- gradle에 sonarqube 설정 및 실행
-  - build.gradle에 아래 내용 추가
+- gradle에 sonarqube 설정 및 실행     
+  - build.gradle에 아래 내용 추가   
   ```
   /* sonarqube */
   buildscript {
