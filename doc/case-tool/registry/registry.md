@@ -1,10 +1,8 @@
 Docker Registry
-------
-#### - 개요
+==========
+### - 개요
 Docker image을  push로 저장하고 pull로 가져올 수 있는 도구이다. github와 비슷한 dockerhub와 같은 역할을 한다고 보면된다. Docker image 관리도구이다.
-</br>
-
-#### - 설치
+### - 설치
   - htpasswd
   ```
   $ cd /sw/common/auth/registry/
@@ -37,7 +35,7 @@ Docker image을  push로 저장하고 pull로 가져올 수 있는 도구이다.
     $ sudo cp /etc/letsencrypt/archive/<DOMAIN>/fullchain1.pem /sw/common/certs/https//cert.pem
     $ sudo cp /etc/letsencrypt/archive/<DOMAIN>/privkey1.pem /sw/common/certs/https/privkey.pem
     ```
-#### - docker-compose.yml
+### - docker-compose.yml
 ```
 version: '2'
 services:
@@ -62,12 +60,12 @@ services:
    - /sw/common/certs/:/certs
 ```
 
-#### - 실행
+### - 실행
 ```
 $ docker-compose up -d
 ```
 
-#### - 테스트
+### - 테스트
   - dev.sw-warehouse.xyz 장비
   ```
   $ docker login -u <USER> -p <PASSWORD> <DOMAIN>:450

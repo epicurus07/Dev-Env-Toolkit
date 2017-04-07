@@ -1,15 +1,15 @@
 Doxygen
-------
+==========
 ![doxygen logo](image/doxygen_logo.png)
-#### - 개요
+### - 개요
 Source code에 쓰여진 주석을 html/lates/pdf 형식으로 문서화 시켜주는 프로그램
 
-#### - 설치
+### - 설치
   ```
   $ yum install doxgen graphviz
   ```
 
-#### - 사용
+### - 사용
 자세한 코드는 [DaemonProjectSample][51cdfa03] 참고
 ```
 // creat doxygen config file
@@ -54,9 +54,9 @@ CALLER_GRAPH           = YES
 $ doxygen
 ```
   - github html view
-  git html url : `https://github.com/<user name>/<repo>/blob/<branch name>/<html file path>`
-  -> git hmtl view url : `https://rawgit.com/<user name>/<repo>/<branch name>/<html file path>`
-  ex) git html url : `https://github.com/lkh4768/DaemonProjectSample/blob/master/doc/html/index.html`
-      -> git html view url : `https://rawgit.com/lkh4768/DaemonProjectSample/master/doc/html/index.html`
+  git html url : `https://github.com/<user name>/<repo>/blob/<branch name>/<html file path>`  
+  -> git hmtl view url : `https://rawgit.com/<user name>/<repo>/<branch name>/<html file path>`  
+  ex) git html url : `https://github.com/lkh4768/DaemonProjectSample/blob/master/doc/html/index.html`  
+      -> git html view url : `https://rawgit.com/lkh4768/DaemonProjectSample/master/doc/html/index.html`  
 
   [51cdfa03]: https://github.com/lkh4768/DaemonProjectSample.git "DaemonProjectSample github url"

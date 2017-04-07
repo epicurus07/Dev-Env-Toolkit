@@ -1,10 +1,10 @@
 MySQL
-------
+======
 ![MySQL Logo](images/logo.png)
-#### - 개요
+### - 개요
 Open source database 관리 도구
 
-#### - docker-compose.yml
+### - docker-compose.yml
 ```
 version: '2'
 services:
@@ -26,7 +26,7 @@ networks:
       name: epicurus-dev-tool-net
 ```
 
-#### - Dockerfile
+### - Dockerfile
 ```
 FROM mysql
 
@@ -38,7 +38,7 @@ ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["mysqld", "--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci"]
 ```
 
-#### - docker-entrypoint.sh
+### - docker-entrypoint.sh
 offical mysql docker image 의 [docker-entrypoint.sh][9b30f795] 참고
 
 [9b30f795]: https://github.com/docker-library/mysql/blob/eeb0c33dfcad3db46a0dfb24c352d2a1601c7667/8.0/docker-entrypoint.sh "mysql official docker-entrypoint.sh"
@@ -67,7 +67,7 @@ done
 .....
 ```
 
-#### - docker-custompoint.sh
+### - docker-custompoint.sh
 ```
 ## insert "user_id user-password database"
 USER_SET_LIST=("sonarqube sonarqube sonarqube" "redmine redmine redmine" "gitbucket gitbucket gitbucket")
@@ -98,7 +98,7 @@ done
 echo 'FLUSH PRIVILEGES ;' | "${mysql[@]}"
 ```
 
-#### - 실행
+### - 실행
 ```
 $ docker network create epicurus-dev-tool-net
 $ chmod +x docker-entrypoint.sh
@@ -106,7 +106,7 @@ $ chmod +x docker-custompoint.sh
 $ docker-compose up -d
 ```
 
-#### - 테스트
+### - 테스트
 ```
 $ docker exec -it mysql bash
 ## entered mysql container
