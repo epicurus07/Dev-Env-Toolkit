@@ -75,33 +75,34 @@ Sample Project는 Gradle를 이용한 Java Project 이다.
   - System Config
     - SonarQube servers
     SonarQube 연동할 때, 필요한 설정 값.
-  ![system config docker builder](images/system-configure/sonarqube-server.PNG)  
+    ![system config docker builder](images/system-configure/sonarqube-server.PNG)  
+    </br>
     - Docker Builder
     docker로 배포할 때, docker remote api를 사용할 수 있도록 설정. docker를 사용하여 배포 image를 만들기 위함.
-![system config docker builder](images/system-configure/docker-builder.PNG)
+    ![system config docker builder](images/system-configure/docker-builder.PNG)
     </br>
     - Docker Plugin
     docker registry를 사용할 수 있도록 설정. 운영 서버에 이미지를 배포하기 위한 registry.
-![system config docker plugin](images/system-configure/docker-plugin.PNG)
+    ![system config docker plugin](images/system-configure/docker-plugin.PNG)
     </br>
     - Publish Over ssh
     운영서버에 접근하여 shell script를 원격으로 실행하기 위함.
-![system config publish over ssh](images/system-configure/publish-over-ssh.PNG)
+    ![system config publish over ssh](images/system-configure/publish-over-ssh.PNG)
     </br>
     - Workespace Sharing
     연관되어 있는 job끼리 같은 workspace를 사용하기 위함.
-![system cofig workspace sharing](images/system-configure/worksapce-sharing.PNG)
+    ![system cofig workspace sharing](images/system-configure/worksapce-sharing.PNG)
     </br>
-  - Global Tool Configuration
+    - Global Tool Configuration
     - Git
-![global tool configuration git](images/global-tool-configuration/Git.PNG)
-</br>
-  - View
+    ![global tool configuration git](images/global-tool-configuration/Git.PNG)
+    </br>
+    - View
     - All
-![view all](images/view/all.PNG)
+    ![view all](images/view/all.PNG)
     - Sample
-![view sample](images/view/sample.PNG)
-  - Job Config
+    ![view sample](images/view/sample.PNG)
+    - Job Config
     - Sample Pipeline
       Job 흐름 제어
       - Pipeline
@@ -131,49 +132,48 @@ Sample Project는 Gradle를 이용한 Java Project 이다.
       </br>
       - build flow diagram
       위의 코드를 다이어그램으로 그리면 아래와 같다
-![pipeline diagram](images/job/sample-pipeline-job/pipeline-dia.jpg)
-  </br>
+      ![pipeline diagram](images/job/sample-pipeline-job/pipeline-dia.jpg)
+      </br>
     - Sample Doxygen Job
     Doxygen 실행 및 github add, commit, push
     </br>
       - GitBucket 항목
-![sample doxygen job gitbucket](images/job/sample-doxygen-job/configure-gitbucket.PNG)
-    </br>
+      ![sample doxygen job gitbucket](images/job/sample-doxygen-job/configure-gitbucket.PNG)
+      </br>
       - 소스 코드 관리 항목
-![sample doxygen job source code management](images/job/sample-doxygen-job/configure-소스코드관리.PNG)
-    </br>
+      ![sample doxygen job source code management](images/job/sample-doxygen-job/configure-소스코드관리.PNG)
+      </br>
       - Build 항목
-![sample doxygen job build](images/job/sample-doxygen-job/configure-build.PNG)
-    </br>
+      ![sample doxygen job build](images/job/sample-doxygen-job/configure-build.PNG)
+      </br>
       - 빌드 후 조치 항목
-![sample doxygen job post-build action](images/job/sample-doxygen-job/configure-빌드후조치.PNG)  
-    </br>
+      ![sample doxygen job post-build action](images/job/sample-doxygen-job/configure-빌드후조치.PNG)  
+      </br>
     - Sample Build Job
     Gradle를 사용하여 jar 파일 생성.
       </br>
       - GitBucket 항목
-![sample build job gitbucket](images/job/sample-build-job/configure-gitbucket.PNG)
+      ![sample build job gitbucket](images/job/sample-build-job/configure-gitbucket.PNG)
       </br>
       - 소스 코드 관리 항목
-![sample build job source code management](images/job/sample-build-job/configure-소스코드관리.PNG)
+      ![sample build job source code management](images/job/sample-build-job/configure-소스코드관리.PNG)
       </br>
       - 빌드 환경 항목
-![sample build job build env](images/job/sample-build-job/configure-빌드환경.PNG)
+      ![sample build job build env](images/job/sample-build-job/configure-빌드환경.PNG)
       </br>
       - Build 항목
-![sample build job build](images/job/sample-build-job/configure-build.PNG)
+      ![sample build job build](images/job/sample-build-job/configure-build.PNG)
       </br>
     - Sample DynamicAnalytics Job
     Valgrind를 사용하여 코드 동적 분석.
     </br>
       - GitBucket 항목
-![sample dynamicanalytics job gitbucket](images/job/sample-dynamicanalytics-job/configure-gitbucket.PNG)
+      ![sample dynamicanalytics job gitbucket](images/job/sample-dynamicanalytics-job/configure-gitbucket.PNG)
       </br>
       - Build 항목
       Deamon process이기 때문에 10초간 실행 후 kill로 종료
-![sample dynamicanalytics job build](images/job/sample-dynamicanalytics-job/configure-build.PNG)
-
-        </br>
+        ![sample dynamicanalytics job build](images/job/sample-dynamicanalytics-job/configure-build.PNG)
+          </br>
         ```
         valgrind --tool=memcheck --leak-check=full --show-reachable=no \
         --undef-value-errors=no --track-origins=no \
@@ -185,43 +185,43 @@ Sample Project는 Gradle를 이용한 Java Project 이다.
         sleep 10
         kill  $(ps -ef | grep "$WORKSPACE/build/libs/DaemonProjectSample.jar" | grep -v 'grep' | awk '{print $2}')
         ```
-      </br>
+        </br>
       - 빌드 후 조치 항목
       Valgrind 결과가 Leak이 30 이상이면 job이 실패했다고 판단하게 설정.
-![sample dynamicanalytics job post-build actions](images/job/sample-dynamicanalytics-job/configure-빌드후조치.PNG)
+      ![sample dynamicanalytics job post-build actions](images/job/sample-dynamicanalytics-job/configure-빌드후조치.PNG)
       </br>
     - Sample StaticAnalytics Job
     Gradle를 사용하여 unittest 실행 및 JUnit plugin를 사용하여 Unittest에 대한 Report를 그래프로 표시.
     </br>
       - GitBucket 항목
-![sample staticanalytics job general](images/job/sample-staticanalytics-job/configure-gitbucket.PNG)
+      ![sample staticanalytics job general](images/job/sample-staticanalytics-job/configure-gitbucket.PNG)
       </br>
       - Build 항목
-![sample staticanalytics job build](images/job/sample-staticanalytics-job/configure-build.PNG)
+      ![sample staticanalytics job build](images/job/sample-staticanalytics-job/configure-build.PNG)
       </br>
     - Sample Deploy Job
     Docker를 이용하여 배포 이미지 생성 및 registry에 push, public over ssh plugin를 사용하여 운영서버에서 원격으로 스크립트를 실행하여 registry에서 pull 및 docker run.
     </br>
       - GitBucket 항목
-![sample deploy job gitbucket](images/job/sample-deploy-job/configure-gitbucket.PNG)
+      ![sample deploy job gitbucket](images/job/sample-deploy-job/configure-gitbucket.PNG)
       </br>
       - Build 항목
       create image
-![sample build job build1](images/job/sample-deploy-job/configure-build1.PNG)
+      ![sample build job build1](images/job/sample-deploy-job/configure-build1.PNG)
       </br>
       registry(sample.com:5000)로 push image
-![sample deploy job build2](images/job/sample-deploy-job/configure-build2.PNG)
+      ![sample deploy job build2](images/job/sample-deploy-job/configure-build2.PNG)
       </br>
       create image하면서 생성된 container 삭제
-![sample deploy job build3](images/job/sample-deploy-job/configure-build3.PNG)
+      ![sample deploy job build3](images/job/sample-deploy-job/configure-build3.PNG)
       </br>
       create image하면서 생성된 image 삭제
-![sample deploy job build4](images/job/sample-deploy-job/configure-build4.PNG)
-![sample deploy job build5](images/job/sample-deploy-job/configure-build5.PNG)
+      ![sample deploy job build4](images/job/sample-deploy-job/configure-build4.PNG)
+      ![sample deploy job build5](images/job/sample-deploy-job/configure-build5.PNG)
       </br>
       - 빌드 후 조치 항목
       사용하지 않는 container 삭제, 모든 image 삭제, create image을 registry(sample.com:5000)에서 pull, run image
-![sample deploy job post-build actions](images/job/sample-deploy-job/configure-빌드후조치.PNG)
+      ![sample deploy job post-build actions](images/job/sample-deploy-job/configure-빌드후조치.PNG)
       </br>
         ```
         # 종료된 컨테이너 삭제
