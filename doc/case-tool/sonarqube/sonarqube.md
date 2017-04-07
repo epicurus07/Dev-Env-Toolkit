@@ -36,17 +36,13 @@ networks:
   - http://\<HOST\>:590/sonar
   - Default ID : admin / PW : admin
   - 환경설정 -> 시스템 -> 업테이트 센터, 아래의 플러그인 설치
-![update center](images/update-center.png)
-
-
+  ![update center](images/update-center.png)
 - 프로젝트 생성
   - 환경설정 -> 프로젝트 -> management
   - Create Project 클릭
   ![project management](images/project-management.png)
   - Name, Key 입력 후 Create 클릭
   ![create project](images/create-project.png)
-
-
 - gradle에 sonarqube 설정 및 실행
   - build.gradle에 아래 내용 추가
   ```
