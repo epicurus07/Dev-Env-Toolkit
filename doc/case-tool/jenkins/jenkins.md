@@ -76,10 +76,11 @@ Sample Project는 Gradle를 이용한 Java Project 이다.
     - SonarQube servers
     SonarQube 연동할 때, 필요한 설정 값.
     ![system config docker builder](images/system-configure/sonarqube-server.PNG)  
+    <br></br>
     - Docker Builder
     docker로 배포할 때, docker remote api를 사용할 수 있도록 설정. docker를 사용하여 배포 image를 만들기 위함.
     ![system config docker builder](images/system-configure/docker-builder.PNG)
-    </br>
+    ..
     - Docker Plugin
     docker registry를 사용할 수 있도록 설정. 운영 서버에 이미지를 배포하기 위한 registry.
     ![system config docker plugin](images/system-configure/docker-plugin.PNG)
