@@ -1,8 +1,8 @@
 Jenkins
 ------------
 ![jenkins](images/jenkins.png)
-#### - [개요][05c45105]
-#### - install Jenkins
+### - [개요][05c45105]
+### - install Jenkins
   - Config Files
     - docker-compose.yml
     ```
@@ -45,7 +45,7 @@ Jenkins
       $ docker-compose up -d
       ```
 <br>
-#### - config jenkins
+### - config jenkins
 Sample Project는 Gradle를 이용한 Java Project 이다.
   - Installed 주 Plugins
   > Build Pipeline Plugin
