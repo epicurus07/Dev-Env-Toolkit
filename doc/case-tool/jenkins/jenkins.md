@@ -56,8 +56,7 @@ Sample Project는 Gradle를 이용한 Java Project 이다.
   > Git client plugin  
   > Git plugin  
   > GIT server Plugin  
-  > GitHub API Plugin  
-  > GitHub plugin  
+  > GitHub API Plugin > GitHub plugin  
   > Gradle Plugin  
   > JUnit Plugin  
   > Pipeline  
@@ -73,8 +72,12 @@ Sample Project는 Gradle를 이용한 Java Project 이다.
 
   - System Config  
     - SonarQube servers    
-    SonarQube 연동할 때, 필요한 설정 값.  
-    ![system config docker builder](images/system-configure/sonarqube-server.PNG)  
+    SonarQube 연동할 때, 필요한 설정 값.   
+    ![system config sonarqube](images/system-configure/sonarqube-server1.PNG)    
+    `Server authentication token`은 SonarQube 계정 중 하나에서 얻어 온다. 상단 좌측의 계정 이름을 클릭하여 `My Account`에서    
+    ![system config sonarqube](images/system-configure/sonarqube-server2.PNG)     
+    `Security` -> `Token` 항목에서 `Generate New Token`을 입력한 후 Genterate를 클릭하여 얻는다.   
+    ![system config sonarqube](images/system-configure/sonarqube-server3.PNG)    
     - Docker Builder    
     docker로 배포할 때, docker remote api를 사용할 수 있도록 설정. docker를 사용하여 배포 image를 만들기 위함.
     ![system config docker builder](images/system-configure/docker-builder.PNG)  
@@ -90,12 +93,16 @@ Sample Project는 Gradle를 이용한 Java Project 이다.
   - Global Tool Configuration
     - Git  
       ![global tool configuration git](images/global-tool-configuration/Git.PNG)
-  - View  
-    - All
-    ![view all](images/view/all.PNG)
-    - Sample  
-    ![view sample](images/view/sample.PNG)
-    - Job Config  
+  - Credentials  
+  docker registry 계정, gitbucket 계정을 설정    
+  ![credentials](images/credentials/credentials.PNG)
+  - Job
+    - View
+      - All
+      ![view all](images/view/all.PNG)
+      - Sample  
+      ![view sample](images/view/sample.PNG)
+    - Config  
       - Sample Pipeline  
       Job 흐름 제어
       - Pipeline  
