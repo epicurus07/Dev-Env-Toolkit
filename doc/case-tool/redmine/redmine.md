@@ -171,7 +171,7 @@ rake redmine:plugins:migrate RAILS_ENV=production
 4. Github hook
 - Redmine과 Github(Git bucket도 가능)을 연동하여, 등록된 git을 통해 소스 변경시 hook방식으로 Redmine에 지정된 소스를 갱신 해주는 플러그인
 - 등록된 일감과 코드를 comment에 #(일감번호)형식으로 작성 함으로써 연동이 편하도록 함
-- Redmine과 Github을 연동 할 경우, Redmine이 설치되어있는 로컬에 Github의 Mirror 저장소를 만든 후, 해당 저장소를 사용 하여야함!
+- Redmine과 Github을 연동 할 경우, Redmine이 설치되어있는 로컬에 Github의 Mirror 저장소를 만든 후, 해당 저장소를 사용 하여야함!(자세한 내용은 [git-scm/git-clone](https://git-scm.com/docs/git-clone "git-scm")의 --mirror옵션 참조)
 - 하기의 docker-custompoint.sh 파일 준비
 
 <pre><code>
