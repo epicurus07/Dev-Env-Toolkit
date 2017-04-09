@@ -1,0 +1,17 @@
+version: '2'
+services:
+ mysql:
+  restart: always
+  build: ./
+  image: epicurus/mysql
+  container_name: mysql
+  networks:
+   - net
+  environment:
+   - MYSQL_ROOT_PASSWORD=1!Mmysql
+  volumes:
+   - /app/mysql:/etc/mysql/conf.d
+networks:
+ net:
+  external:
+      name: epicurus-dev-tool-net

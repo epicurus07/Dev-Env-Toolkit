@@ -1,0 +1,19 @@
+version: '2'
+services:
+ cadvisor:
+  restart: always
+  image: google/cadvisor:latest
+  container_name: cadvisor
+  networks:
+   - net
+  ports:
+   - "180:8080"
+  volumes:
+   - /:/rootfs:ro
+   - /var/run:/var/run:rw
+   - /sys:/sys:ro
+   - /app/docker/:/var/lib/docker:ro
+networks:
+ net:
+  external:
+      name: epicurus-dev-tool-net

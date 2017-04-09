@@ -1,0 +1,119 @@
+version: '2'
+services:
+ mysql:
+  restart: always
+  build: ./mysql/
+  image: epicurus/mysql
+  container_name: mysql
+  networks:
+   - net
+  environment:
+   - MYSQL_ROOT_PASSWORD=1!Mmysql
+  volumes:
+   - /app/mysql:/etc/mysql/conf.d
+ cadvisor:
+  restart: always
+  image: google/cadvisor:latest
+  container_name: cadvisor
+  networks:
+   - net
+  ports:
+   - "180:8080"
+  volumes:
+   - /:/rootfs:ro
+   - /var/run:/var/run:rw
+   - /sys:/sys:ro
+   - /app/docker/:/var/lib/docker:ro
+ gitbucket:
+  restart: always
+  image: f99aq8ove/gitbucket
+  container_name: gitbucket
+  depends_on:
+   - mysql
+  networks:
+   - net
+  environment:
+   - GITBUCKET_DB_URL=jdbc:mysql://mysql:3306/gitbucket?useSSL=false
+   - GITBUCKET_DB_USER=gitbucket
+   - GITBUCKET_DB_PASSWORD=gitbucket
+  ports:
+   - "280:8080"
+   - "294:29418"
+  volumes:
+   - /app/docker/gitbucket:/gitbucket
+ jenkins:
+  restart: always
+  build: ./jenkins/
+  image: epicurus/jenkins
+  container_name: jenkins
+  networks:
+   - net
+  ports:
+   - "380:8080"
+  volumes:
+   - /app/jenkins/:/var/jenkins_home
+   - /var/run/docker.sock:/var/run/docker.sock
+   - /sw/common/certs/:/certs
+   - /usr/bin/docker:/usr/bin/docker
+ registry:
+  restart: always
+  image: registry:2
+  container_name: registry
+  networks:
+   - net
+  environment:
+   - REGISTRY_AUTH=htpasswd
+   - REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd
+   - REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm
+   - REGISTRY_HTTP_TLS_CERTIFICATE=/certs/https/domain/cert.pem
+   - REGISTRY_HTTP_TLS_KEY=/certs/https/domain/privkey.pem
+  ports:
+   - "450:5000"
+  volumes:
+   - /app/registry:/var/lib/registry
+   - /sw/common/auth/registry:/auth
+   - /sw/common/certs/:/certs
+ sonarqube:
+  restart: always
+  image: sonarqube
+  container_name: sonarqube
+  ports:
+   - "590:9000"
+  depends_on:
+   - mysql
+  networks:
+   - net
+  environment:
+   - SONARQUBE_JDBC_USERNAME=sonar
+   - SONARQUBE_JDBC_PASSWORD=sonar
+   - SONARQUBE_JDBC_URL=jdbc:mysql://mysql:3306/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useConfigs=maxPerformance&useSSL=false
+  volumes:
+   - /app/sonarqube/conf:/opt/sonarqube/conf
+   - /app/sonarqube/extensions:/opt/sonarqube/extensions
+   - /app/sonarqube/bundled-plugins:/opt/sonarqube/bundled-plugins
+   - /app/sonarqube/data:/opt/sonarqube/data
+   - /app/sonarqube/temp:/opt/sonarqube/temp
+ redmine:
+  restart: always
+  build: ./redmine/
+  image: epicurus/redmine
+  container_name: redmine
+  ports:
+   - "630:3000"
+  depends_on:
+   - mysql
+  environment:
+   - REDMINE_DB_MYSQL=mysql
+   - REDMINE_DB_PORT=3306
+   - REDMINE_DB_USERNAME=redmine
+   - REDMINE_DB_PASSWORD=redmine
+   - REDMINE_DB_DATABASE=redmine
+   - REDMINE_DB_ENCODING=utf8
+  networks:
+   - net
+  volumes:
+   - /app/redmine:/usr/src/redmine/files
+networks:
+ net:
+  external:
+      name: epicurus-dev-tool-net

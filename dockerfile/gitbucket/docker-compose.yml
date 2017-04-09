@@ -1,0 +1,21 @@
+version: '2'
+services:
+ gitbucket:
+  restart: always
+  image: f99aq8ove/gitbucket
+  container_name: gitbucket
+  networks:
+   - net
+  environment:
+   - GITBUCKET_DB_URL=jdbc:mysql://mysql:3306/gitbucket?useSSL=false
+   - GITBUCKET_DB_USER=gitbucket
+   - GITBUCKET_DB_PASSWORD=gitbucket
+  ports:
+   - "280:8080"
+   - "294:29418"
+  volumes:
+   - /app/docker/gitbucket:/gitbucket
+networks:
+ net:
+  external:
+      name: epicurus-dev-tool-net

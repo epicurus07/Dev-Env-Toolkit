@@ -1,0 +1,24 @@
+version: '2'
+services:
+ registry:
+  restart: always
+  image: registry:2
+  container_name: registry
+  networks:
+   - net
+  environment:
+   - REGISTRY_AUTH=htpasswd
+   - REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd
+   - REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm
+   - REGISTRY_HTTP_TLS_CERTIFICATE=/certs/https/domain/cert.pem
+   - REGISTRY_HTTP_TLS_KEY=/certs/https/domain/privkey.pem
+  ports:
+   - "450:5000"
+  volumes:
+   - /app/registry:/var/lib/registry
+   - /sw/common/auth/registry:/auth
+   - /sw/common/certs/:/certs
+networks:
+ net:
+  external:
+      name: epicurus-dev-tool-net

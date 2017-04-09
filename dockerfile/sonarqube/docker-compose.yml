@@ -1,0 +1,24 @@
+version: '2'
+services:
+ sonarqube:
+  restart: always
+  image: sonarqube
+  container_name: sonarqube
+  ports:
+   - "590:9000"
+  networks:
+   - net
+  environment:
+   - SONARQUBE_JDBC_USERNAME=sonar
+   - SONARQUBE_JDBC_PASSWORD=sonar
+   - SONARQUBE_JDBC_URL=jdbc:mysql://mysql:3306/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useConfigs=maxPerformance&useSSL=false
+  volumes:
+   - /app/sonarqube/conf:/opt/sonarqube/conf
+   - /app/sonarqube/extensions:/opt/sonarqube/extensions
+   - /app/sonarqube/bundled-plugins:/opt/sonarqube/bundled-plugins
+   - /app/sonarqube/data:/opt/sonarqube/data
+   - /app/sonarqube/temp:/opt/sonarqube/temp
+networks:
+ net:
+  external:
+      name: epicurus-dev-tool-net

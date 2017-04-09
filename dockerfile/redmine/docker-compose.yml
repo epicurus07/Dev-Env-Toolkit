@@ -1,0 +1,24 @@
+version: '2'
+services:
+ redmine:
+  restart: always
+  build: ./
+  image: epicurus/redmine
+  container_name: redmine
+  ports:
+   - "630:3000"
+  environment:
+   - REDMINE_DB_MYSQL=mysql
+   - REDMINE_DB_PORT=3306
+   - REDMINE_DB_USERNAME=redmine
+   - REDMINE_DB_PASSWORD=redmine
+   - REDMINE_DB_DATABASE=redmine
+   - REDMINE_DB_ENCODING=utf8
+  networks:
+   - net
+  volumes:
+   - /app/redmine:/usr/src/redmine/files
+networks:
+ net:
+  external:
+      name: epicurus-dev-tool-net
