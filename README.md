@@ -17,4 +17,4 @@
 - [MySQL](https://github.com/epicurus07/dev-case-tools/blob/master/doc/case-tool/mysql/mysql.md)  
 - [Redmine](https://github.com/epicurus07/dev-case-tools/blob/master/doc/case-tool/redmine/redmine.md)  
 - [Registry](https://github.com/epicurus07/dev-case-tools/blob/master/doc/case-tool/registry/registry.md)  
-- [SonarQube](https://github.com/epicurus07/dev-case-tools/blob/master/doc/case-tool/registry/registry.md)  
+- [SonarQube](https://github.com/epicurus07/Dev-Env-Toolkit/blob/master/doc/case-tool/sonarqube/sonarqube.md)  
