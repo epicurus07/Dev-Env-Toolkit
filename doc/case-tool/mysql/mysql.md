@@ -19,6 +19,8 @@ services:
    - MYSQL_ROOT_PASSWORD=root
   volumes:
    - /app/mysql:/etc/mysql/conf.d
+   # data dir
+   - /db/mysql:/var/lib/mysql
 ## Before build, create docker network
 networks:
  net:
