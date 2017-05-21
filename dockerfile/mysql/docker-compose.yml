@@ -11,6 +11,8 @@ services:
    - MYSQL_ROOT_PASSWORD=1!Mmysql
   volumes:
    - /app/mysql:/etc/mysql/conf.d
+   # data dir
+   - /db/mysql:/var/lib/mysql
 networks:
  net:
   external:
