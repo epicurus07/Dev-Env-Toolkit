@@ -178,7 +178,17 @@ Sample Project는 Gradle를 이용한 Java Project 이다.
       - GitBucket 항목
       ![sample staticanalytics job general](images/job/sample-staticanalytics-job/configure-gitbucket.PNG)
       - Build 항목
-      ![sample staticanalytics job build](images/job/sample-staticanalytics-job/configure-build.PNG)
+      ![sample staticanalytics job build](images/job/sample-staticanalytics-job/configure-build.PNG)  
+
+      ```
+      sonar.host.url=http://sonarqube.com/
+      sonar.projectName=Netty-Restful
+      sonar.projectKey=netty-restful
+      sonar.sources=src/main
+      sonar.tests=src/test
+      sonar.sourceEncoding=UTF-8
+      ```  
+
     - Sample Deploy Job  
     Docker를 이용하여 배포 이미지 생성 및 registry에 push, public over ssh plugin를 사용하여 운영서버에서 원격으로 스크립트를 실행하여 registry에서 pull 및 docker run.
       - GitBucket 항목
