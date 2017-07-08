@@ -48,54 +48,76 @@ Jenkins
 Sample Project는 Gradle를 이용한 Java Project 이다.
   - Installed 주 Plugins
 
-  > Build Pipeline Plugin
-  > Docker Commons Plugin
-  > Docker Pipeline
-  > Docker plugin
-  > docker-build-step
-  > Doxygen Plug-in
-  > Git client plugin
-  > Git plugin
-  > GIT server Plugin
-  > GitHub API Plugin
-  > GitHub plugin
-  > Gradle Plugin
-  > JUnit Plugin
-  > Pipeline
-  > Pipeline Graph Analysis Plugin
-  > Pipeline Utility Steps
-  > Publish Over SSH
-  > Redmine plugin
-  > Shared Workspace
-  > Valgrind Plug-in
-  > xUnit plugin
-  > GitBucket Plugin
-  > SonarQube Scanner for Jenkins
+  > Build Pipeline Plugin  
+  > Docker Commons Plugin  
+  > Docker Pipeline  
+  > Docker plugin  
+  > docker-build-step  
+  > Doxygen Plug-in  
+  > Git client plugin  
+  > Git plugin  
+  > GIT server Plugin  
+  > GitHub API Plugin  
+  > GitHub plugin  
+  > Gradle Plugin  
+  > JUnit Plugin  
+  > Pipeline  
+  > Pipeline Graph Analysis Plugin  
+  > Pipeline Utility Steps  
+  > Publish Over SSH  
+  > Redmine plugin  
+  > Shared Workspace  
+  > Valgrind Plug-in  
+  > xUnit plugin  
+  > GitBucket Plugin  
+  > SonarQube Scanner for Jenkins  
 
   - System Config
     - SonarQube servers
-    SonarQube 연동할 때, 필요한 설정 값.
-    ![system config sonarqube](images/system-configure/sonarqube-server1.PNG)
-    `Server authentication token`은 SonarQube 계정 중 하나에서 얻어 온다. 상단 좌측의 계정 이름을 클릭하여 `My Account`에서
-    ![system config sonarqube](images/system-configure/sonarqube-server2.PNG)
-    `Security` -> `Token` 항목에서 `Generate New Token`을 입력한 후 Genterate를 클릭하여 얻는다.
-    ![system config sonarqube](images/system-configure/sonarqube-server3.PNG)
+      SonarQube 연동할 때, 필요한 설정 값.
+    
+      ![system config sonarqube](images/system-configure/sonarqube-server1.PNG)
+    
+      `Server authentication token`은 SonarQube 계정 중 하나에서 얻어 온다. 상단 좌측의 계정 이름을 클릭하여 `My Account`에서
+    
+      ![system config sonarqube](images/system-configure/sonarqube-server2.PNG)
+    
+      `Security` -> `Token` 항목에서 `Generate New Token`을 입력한 후 Genterate를 클릭하여 얻는다.
+    
+      ![system config sonarqube](images/system-configure/sonarqube-server3.PNG)
+    
     - Docker Builder
-    docker로 배포할 때, docker remote api를 사용할 수 있도록 설정. docker를 사용하여 배포 image를 만들기 위함.
-    ![system config docker builder](images/system-configure/docker-builder.PNG)
+    
+      docker로 배포할 때, docker remote api를 사용할 수 있도록 설정. docker를 사용하여 배포 image를 만들기 위함.
+    
+      ![system config docker builder](images/system-configure/docker-builder.PNG)
+    
     - Docker Plugin
+    
     docker registry를 사용할 수 있도록 설정. 운영 서버에 이미지를 배포하기 위한 registry.
+    
     ![system config docker plugin](images/system-configure/docker-plugin.PNG)
+    
   - Global Tool Configuration
+    
     - Git
+    
       ![global tool configuration git](images/global-tool-configuration/Git.PNG)
+    
     - Gradle
+      
       ![global tool configuration gradle](images/global-tool-configuration/Gradle.PNG)
+    
     - SonarQube Scanner
+      
       ![global tool configuration sonarqube sanner](images/global-tool-configuration/Sonarqube_Scanner.PNG)
+  
   - Credentials
+  
   docker registry 계정, gitbucket 계정을 설정
+  
   ![credentials](images/credentials/credentials.PNG)
+  
   - Job
       - Sample Pipeline All
 
@@ -106,6 +128,7 @@ Sample Project는 Gradle를 이용한 Java Project 이다.
         - Jenkinsfile.groovy
 
         Jenkinsfile.groovy는 해당 프로젝트 폴더에 배치한다.
+        
         ![project tree](images/job/sample-pipeline-all/project_code_tree.PNG)
 
         ```
