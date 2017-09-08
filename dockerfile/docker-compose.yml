@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 services:
  mysql:
   restart: always
@@ -13,19 +13,20 @@ services:
    - /app/mysql:/etc/mysql/conf.d
    # data dir
    - /db/mysql:/var/lib/mysql
- cadvisor:
+ netdata:
   restart: always
-  image: google/cadvisor:latest
-  container_name: cadvisor
+  image: titpetric/netdata
+  container_name: netdata
+  ports:
+   - "1799:19999"
   networks:
    - net
-  ports:
-   - "180:8080"
   volumes:
-   - /:/rootfs:ro
-   - /var/run:/var/run:rw
-   - /sys:/sys:ro
-   - /app/docker/:/var/lib/docker:ro
+   - /proc:/host/proc:ro
+	 - /sys:/host/sys:ro
+	 - /var/run/docker.sock:/var/run/docker.sock
+  cap_add:
+   - SYS_PTRACE
  gitbucket:
   restart: always
   image: f99aq8ove/gitbucket

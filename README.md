@@ -10,7 +10,7 @@
 ## 설치 및 사용법  
 - [Docker](https://github.com/epicurus07/dev-case-tools/blob/master/doc/docker/config_docker.md)  
 - [Docker-Compose](https://github.com/epicurus07/dev-case-tools/blob/master/doc/docker/docker-compose_sample.md)  
-- [cAdvice](https://github.com/epicurus07/dev-case-tools/blob/master/doc/case-tool/cAdvisor/cAdvisor.md)    
+- [netdata](https://github.com/epicurus07/dev-case-tools/blob/master/doc/case-tool/netdata/netdata.md)    
 - [Doxygen](https://github.com/epicurus07/dev-case-tools/blob/master/doc/case-tool/doxygen/doxygen.md)
 - [Gitbucket](https://github.com/epicurus07/dev-case-tools/blob/master/doc/case-tool/gitbucket/gitbucket.md)  
 - [Jenkins](https://github.com/epicurus07/dev-case-tools/blob/master/doc/case-tool/jenkins/jenkins_v2.md)  

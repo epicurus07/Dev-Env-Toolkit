@@ -1,0 +1,20 @@
+version: '3'
+services:
+ netdata:
+  restart: always
+  image: titpetric/netdata
+  container_name: netdata
+  ports:
+   - "1199:19999"
+	networks:
+	 - net
+	volumes:
+	 - /proc:/host/proc:ro
+	 - /sys:/host/sys:ro
+	 - /var/run/docker.sock:/var/run/docker.sock
+	cap_add:
+	 - SYS_PTRACE
+networks:
+ net:
+  external:
+      name: epicurus-dev-tool-net
