@@ -1,0 +1,17 @@
+version: '3'
+services:
+ netdata-proxy:
+  restart: always
+  image: nginx
+  container_name: netdata-proxy
+  ports:
+   - "199:199"
+  networks:
+   - net
+  volumes:
+   - /app/netdata-proxy/nginx.conf:/etc/nginx/conf.d/default.conf
+   - /sw/common/certs:/etc/nginx/certs
+networks:
+ net:
+  external:
+      name: epicurus-dev-tool-net

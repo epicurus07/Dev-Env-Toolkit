@@ -210,9 +210,9 @@ Sample Project는 Gradle를 이용한 Java Project 이다.
         # 종료된 이미지 삭제
         docker images | awk '{print $3}' | grep -v 'IMAGE' | xargs --no-run-if-empty docker rmi -f
         # registry에 접속 로그인
-        docker login -u epicurus -p 1Eepicurus dev.sw-warehouse.xyz:450
+        docker login -u epicurus -p 1Eepicurus <REGISTRY DOMAIN>:450
         # 이미지 pull 후 run
-        docker run -d --name daemon-project-sample dev.sw-warehouse.xyz:450/daemon-project-sample
+        docker run -d --name daemon-project-sample <REGISTRY DOMAIN>:450/daemon-project-sample
         ```
 
   [05c45105]: https://github.com/Yongdae-Kim/HowToUseJenkins "jenkins overview"

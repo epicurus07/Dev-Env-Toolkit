@@ -17,8 +17,6 @@ services:
   restart: always
   image: titpetric/netdata
   container_name: netdata
-  ports:
-   - "1799:19999"
   networks:
    - net
   volumes:
@@ -27,6 +25,19 @@ services:
 	 - /var/run/docker.sock:/var/run/docker.sock
   cap_add:
    - SYS_PTRACE
+ netdata-proxy:
+  restart: always
+  image: nginx
+  container_name: netdata-proxy
+  ports:
+   - "199:199"
+  depends_on:
+   - netdata
+  networks:
+   - net
+  volumes:
+   - /app/netdata-proxy/nginx.conf:/etc/nginx/conf.d/default.conf
+   - /sw/common/certs:/etc/nginx/certs
  gitbucket:
   restart: always
   image: f99aq8ove/gitbucket
@@ -96,6 +107,18 @@ services:
    - /app/sonarqube/bundled-plugins:/opt/sonarqube/bundled-plugins
    - /app/sonarqube/data:/opt/sonarqube/data
    - /app/sonarqube/temp:/opt/sonarqube/temp
+ sonar-proxy:
+  image: nginx
+  container_name: sonar-proxy
+  ports:
+   - "590:590"
+  depends_on:
+   - sonarqube
+  networks:
+   - net
+  volumes:
+   - /app/sonar-proxy/nginx.conf:/etc/nginx/conf.d/default.conf
+   - /sw/common/certs:/etc/nginx/certs
  redmine:
   restart: always
   build: ./redmine/

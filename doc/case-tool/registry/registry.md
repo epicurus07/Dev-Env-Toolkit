@@ -31,7 +31,7 @@ Docker image을  push로 저장하고 pull로 가져올 수 있는 도구이다.
       s.serve_forever()"
       # 아래의 내용 복사 후 root 계정에서 백그라운드에서 실행 후 엔터
       .......
-    $ mkdir /sw/common/certs/dev.sw-warehouse.xyz
+    $ mkdir /sw/common/certs/
     $ sudo cp /etc/letsencrypt/archive/<DOMAIN>/fullchain1.pem /sw/common/certs/https//cert.pem
     $ sudo cp /etc/letsencrypt/archive/<DOMAIN>/privkey1.pem /sw/common/certs/https/privkey.pem
     ```
@@ -66,7 +66,7 @@ $ docker-compose up -d
 ```
 
 ### - 테스트
-  - dev.sw-warehouse.xyz 장비
+  - 개발 장비
   ```
   $ docker login -u <USER> -p <PASSWORD> <DOMAIN>:450
   $ docker pull centos
