@@ -1,0 +1,43 @@
+version: '3'
+services:
+ gitlab-ce:
+  restart: always
+  image: gitlab/gitlab-ce
+  container_name: gitlab-ce
+  ports:
+   - "780:780"
+	 - "744:744"
+	 - "722:22"
+	environment:
+   GITLAB_OMNIBUS_CONFIG: |
+    external_url "https://<DOMAIN>:1744"
+    gitlab_url "https://<DOMAIN>:1744"
+    gitlab_rails['time_zone'] = "Asia/Seoul"
+    gitlab_monitor['enable'] = false
+    gitlab_rails['gitlab_shell_ssh_port'] = 722
+    nginx['listen_port'] = 744
+    nginx['redirect_http_to_https_port'] = 780
+    nginx['redirect_http_to_https'] = true
+    nginx['ssl_certificate'] = "/var/opt/gitlab/certs/fullchain1.pem"
+    nginx['ssl_certificate_key'] = "/var/opt/gitlab/certs/privkey1.pem"
+    gitlab_rails['smtp_enable'] = true
+    gitlab_rails['smtp_address'] = "smtp.gmail.com"
+    gitlab_rails['smtp_port'] = 587
+    gitlab_rails['smtp_user_name'] = "lkh5510@gmail.com"
+    gitlab_rails['smtp_password'] = "xxxx"
+    gitlab_rails['smtp_domain'] = "smtp.gmail.com"
+    gitlab_rails['smtp_authentication'] = "login"
+    gitlab_rails['smtp_enable_starttls_auto'] = true
+    gitlab_rails['smtp_tls'] = false
+    gitlab_rails['smtp_openssl_verify_mode'] = "peer"
+  networks:
+   - net
+  volumes:
+   - /app/gitlab/data:/var/opt/gitlab
+	 - /sw/common/certs:/var/opt/gitlab/certs
+	 - /app/gitlab/config:/etc/gitlab
+   - /applog/gitlab:/var/log/gitlab
+networks:
+ net:
+  external:
+      name: epicurus-dev-tool-net

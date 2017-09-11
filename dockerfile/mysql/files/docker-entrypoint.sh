@@ -1,3 +1,9 @@
+################################################################################
+# original code																																 #
+#	https://github.com/docker-library/mysql/blob/master/5.7/docker-entrypoint.sh #
+# modified by lkh4768																													 #
+################################################################################
+
 #!/bin/bash
 set -eo pipefail
 shopt -s nullglob
