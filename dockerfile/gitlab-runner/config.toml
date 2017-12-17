@@ -1,0 +1,16 @@
+concurrent = 1
+check_interval = 0
+
+[[runners]]
+  name = "tmpdir-runner"
+  url = "https://<url>:1744/"
+  token = "64939d035d843e65f8c94450d55880"
+  executor = "docker"
+  [runners.docker]
+    tls_verify = false
+    image = "java:8"
+    privileged = true
+    disable_cache = false
+    volumes = ["/cache"]
+    shm_size = 0
+  [runners.cache]

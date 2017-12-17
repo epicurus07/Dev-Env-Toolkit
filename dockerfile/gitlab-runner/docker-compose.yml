@@ -1,0 +1,15 @@
+version: '3'
+services:
+ gitlab-runner-tmpdir-3:
+  restart: always
+  image: gitlab/gitlab-runner
+  container_name: gitlab-runner-tmpdir-3
+  networks:
+   - net
+  volumes:
+   - /app/gitlab-runner-tmpdir/config:/etc/gitlab-runner
+   - /var/run/docker.sock:/var/run/docker.sock
+networks:
+ net:
+  external:
+      name: epicurus-dev-tool-net
